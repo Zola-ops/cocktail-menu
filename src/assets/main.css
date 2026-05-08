@@ -12,6 +12,27 @@
   box-sizing: border-box;
 }
 
+/* 重置伪元素，防止意外的勾选标记 */
+*::before,
+*::after {
+  content: normal !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 确保没有意外的 SVG 路径渲染 */
+svg {
+  overflow: hidden;
+}
+
+/* 移除所有可能的勾选标记样式 */
+.ticks,
+.check,
+.checkmark {
+  display: none !important;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);

@@ -295,23 +295,23 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-2 gap-2">
             <button
               @click="handleAddToCollection"
-              class="py-2 bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] hover:opacity-90 text-white rounded-lg font-medium transition flex items-center justify-center gap-2 shadow-[var(--glow-cyan)] text-sm"
-              style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
+              class="py-1.5 px-3 bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-pink)] hover:opacity-90 text-white rounded-lg font-medium transition flex items-center justify-center gap-1.5 shadow-[var(--glow-cyan)] text-xs"
+              style="font-family: 'Orbitron', monospace; letter-spacing: 0.5px;"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
               </svg>
               存入调酒本
             </button>
             <button
               @click="handleSaveAndShare"
-              class="py-2 bg-gradient-to-r from-[var(--neon-purple)] to-[var(--neon-pink)] hover:opacity-90 text-white rounded-lg font-medium transition flex items-center justify-center gap-2 shadow-[var(--glow-purple)] text-sm"
-              style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
+              class="py-1.5 px-3 bg-gradient-to-r from-[var(--neon-purple)] to-[var(--neon-pink)] hover:opacity-90 text-white rounded-lg font-medium transition flex items-center justify-center gap-1.5 shadow-[var(--glow-purple)] text-xs"
+              style="font-family: 'Orbitron', monospace; letter-spacing: 0.5px;"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
               </svg>
               保存分享
@@ -320,10 +320,10 @@
 
           <button
             @click="clearGenerated"
-            class="w-full py-2 bg-[var(--cyber-dark-2)] hover:bg-[var(--neon-cyan)]/20 text-[var(--neon-cyan)] rounded-lg transition flex items-center justify-center gap-2 mt-3 border border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] text-sm"
+            class="w-full py-1.5 px-3 bg-[var(--cyber-dark-2)] hover:bg-[var(--neon-cyan)]/20 text-[var(--neon-cyan)] rounded-lg transition flex items-center justify-center gap-2 mt-2 border border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] text-xs"
             style="font-family: 'Orbitron', monospace;"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
             再来一杯

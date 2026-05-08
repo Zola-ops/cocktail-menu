@@ -43,6 +43,7 @@ export type TasteTag =
   | '咸' 
   | '辣' 
   | '茶香'
+  | '泥煤味'
 
 export interface FilterState {
   bases: BaseSpirit[]

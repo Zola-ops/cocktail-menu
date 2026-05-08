@@ -1,6 +1,6 @@
 <template>
   <div class="fixed inset-0 z-50 modal-overlay" @click.self="$emit('close')">
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @emit="close"></div>
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="$emit('close')"></div>
     
     <div class="absolute bottom-0 left-0 right-0 max-h-[90vh] overflow-y-auto modal-content rounded-t-3xl slide-up">
       <!-- Header -->
@@ -163,7 +163,7 @@
           </div>
           <div class="space-y-2">
             <div
-              v-for="(step, index) in form.steps"
+              v-for="(_, index) in form.steps"
               :key="index"
               class="flex gap-2"
             >
@@ -250,20 +250,22 @@ const emit = defineEmits<{
   'add': [cocktail: Omit<Cocktail, 'id' | 'createdAt'>]
 }>()
 
-const baseOptions = baseSpirits
-const tasteOptions = tasteTags
-const difficultyOptions = [
-  { value: 'easy' as const, label: '⭐ 简单' },
-  { value: 'medium' as const, label: '⭐⭐ 中等' },
-  { value: 'hard' as const, label: '⭐⭐⭐ 困难' },
+const baseOptions: BaseSpirit[] = [...baseSpirits]
+const tasteOptions: TasteTag[] = [...tasteTags]
+const difficultyOptions: { value: 'easy' | 'medium' | 'hard'; label: string }[] = [
+  { value: 'easy', label: '⭐ 简单' },
+  { value: 'medium', label: '⭐⭐ 中等' },
+  { value: 'hard', label: '⭐⭐⭐ 困难' },
 ]
+
+type Difficulty = 'easy' | 'medium' | 'hard'
 
 const form = ref({
   name: '',
   nameEn: '',
   base: [] as BaseSpirit[],
   taste: [] as TasteTag[],
-  difficulty: 'easy' as const,
+  difficulty: 'easy' as Difficulty,
   ingredients: [{ name: '', amount: '' }] as Ingredient[],
   steps: [''] as string[],
   glass: '',

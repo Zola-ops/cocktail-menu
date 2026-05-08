@@ -1,16 +1,15 @@
 <template>
   <div class="container mx-auto px-4 py-4">
-    <!-- Base Spirits -->
     <div class="mb-4">
       <div class="text-sm text-slate-400 mb-2">基酒</div>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="base in baseSpirits"
           :key="base"
-          @click="$emit('update:bases', toggle(base, bases))"
+          @click="toggleBase(base)"
           :class="[
             'px-3 py-1.5 rounded-full text-sm font-medium transition',
-            bases.includes(base)
+            props.bases.includes(base as BaseSpirit)
               ? 'bg-orange-500 text-white'
               : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
           ]"
@@ -20,17 +19,16 @@
       </div>
     </div>
 
-    <!-- Taste Tags -->
     <div class="mb-4">
       <div class="text-sm text-slate-400 mb-2">口味</div>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="taste in tasteTags"
           :key="taste"
-          @click="$emit('update:tastes', toggle(taste, tastes))"
+          @click="toggleTaste(taste)"
           :class="[
             'px-3 py-1.5 rounded-full text-sm font-medium transition',
-            tastes.includes(taste)
+            props.tastes.includes(taste as TasteTag)
               ? 'bg-emerald-500 text-white'
               : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
           ]"
@@ -47,7 +45,7 @@
         <button
           v-for="tag in specialTags"
           :key="tag"
-          @click="$emit('update:specialTags', toggle(tag, specialTags))"
+          @click="toggleSpecialTag(tag)"
           :class="[
             'px-3 py-1.5 rounded-full text-sm font-medium transition',
             props.specialTags.includes(tag)
@@ -68,10 +66,10 @@
           <button
             v-for="diff in difficulties"
             :key="diff.value"
-            @click="$emit('update:difficulty', toggle(diff.value, difficulty))"
+            @click="toggleDifficulty(diff.value)"
             :class="[
               'px-3 py-1.5 rounded-full text-sm font-medium transition',
-              difficulty.includes(diff.value)
+              props.difficulty.includes(diff.value)
                 ? 'bg-purple-500 text-white'
                 : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
             ]"
@@ -111,7 +109,6 @@
         </button>
       </div>
 
-      <!-- Clear Button -->
       <button
         v-if="hasFilters"
         @click="$emit('clear')"
@@ -159,13 +156,32 @@ const hasFilters = computed(() => {
   return props.bases.length > 0 || props.tastes.length > 0 || props.difficulty.length > 0 || props.specialTags.length > 0
 })
 
-function toggle<T>(item: T, list: T[]): T[] {
-  const index = list.indexOf(item)
-  if (index === -1) {
-    return [...list, item]
-  } else {
-    return list.filter((_, i) => i !== index)
-  }
+function toggleBase(base: string) {
+  const newBases = props.bases.includes(base as BaseSpirit)
+    ? props.bases.filter(b => b !== base)
+    : [...props.bases, base as BaseSpirit]
+  emit('update:bases', newBases)
+}
+
+function toggleTaste(taste: string) {
+  const newTastes = props.tastes.includes(taste as TasteTag)
+    ? props.tastes.filter(t => t !== taste)
+    : [...props.tastes, taste as TasteTag]
+  emit('update:tastes', newTastes)
+}
+
+function toggleSpecialTag(tag: string) {
+  const newTags = props.specialTags.includes(tag)
+    ? props.specialTags.filter(t => t !== tag)
+    : [...props.specialTags, tag]
+  emit('update:specialTags', newTags)
+}
+
+function toggleDifficulty(diff: string) {
+  const newDifficulty = props.difficulty.includes(diff)
+    ? props.difficulty.filter(d => d !== diff)
+    : [...props.difficulty, diff]
+  emit('update:difficulty', newDifficulty)
 }
 
 function getBaseEmoji(base: string): string {
@@ -193,6 +209,7 @@ function getTasteEmoji(taste: string): string {
     '咸': '🧂',
     '辣': '🌶️',
     '茶香': '🍵',
+    '泥煤味': '💨',
   }
   return emojis[taste] || '👅'
 }

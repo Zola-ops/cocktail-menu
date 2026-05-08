@@ -155,17 +155,10 @@
                   :key="mood"
                   @click="toggleSelection(selectedMoods, mood)"
                   :class="[
-<<<<<<< HEAD
                     'px-3 py-2 rounded text-sm font-medium transition border',
                     selectedMoods.includes(mood)
                       ? 'bg-[var(--neon-pink)] text-white border-[var(--neon-pink)] shadow-[var(--glow-pink)]'
                       : 'bg-[var(--cyber-dark-2)] text-[var(--neon-pink)] border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] hover:shadow-[var(--glow-pink)]'
-=======
-                    'px-3 py-2 rounded-lg text-sm font-medium transition border',
-                    selectedMoods.includes(mood)
-                      ? 'bg-purple-500 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
-                      : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
->>>>>>> main
                   ]"
                   style="font-family: 'Orbitron', monospace; text-transform: uppercase; letter-spacing: 0.5px;"
                 >

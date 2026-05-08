@@ -3,31 +3,36 @@
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="$emit('close')"></div>
     
     <div class="absolute bottom-0 left-0 right-0 max-h-[90vh] overflow-y-auto modal-content rounded-t-3xl slide-up">
-      <!-- Header -->
       <div class="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-6 py-4">
         <div class="flex items-center justify-between">
           <div>
             <h2 class="text-2xl font-bold text-white">{{ cocktail.name }}</h2>
             <p class="text-slate-400">{{ cocktail.nameEn }}</p>
           </div>
-          <button
-            @click="$emit('close')"
-            class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition"
-          >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div class="flex items-center gap-2">
+            <button
+              @click="$emit('toggleFavorite', cocktail.id)"
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-xl transition"
+            >
+              {{ isFavorite ? '❤️' : '🤍' }}
+            </button>
+            <button
+              @click="$emit('close')"
+              class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
       <div class="px-6 py-6 space-y-6">
-        <!-- Description -->
         <div v-if="cocktail.description" class="text-slate-300">
           {{ cocktail.description }}
         </div>
 
-        <!-- Tags -->
         <div class="flex flex-wrap gap-2">
           <span
             v-for="base in cocktail.base"
@@ -48,7 +53,6 @@
           </span>
         </div>
 
-        <!-- Ingredients -->
         <div>
           <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
             <span>🧪</span> 配方
@@ -65,7 +69,6 @@
           </div>
         </div>
 
-        <!-- Steps -->
         <div>
           <h3 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
             <span>📝</span> 制作步骤
@@ -84,7 +87,6 @@
           </div>
         </div>
 
-        <!-- Garnish & Glass -->
         <div class="grid grid-cols-2 gap-4">
           <div v-if="cocktail.glass" class="bg-slate-800/50 rounded-xl p-4">
             <div class="text-sm text-slate-400 mb-1">杯型</div>
@@ -96,7 +98,6 @@
           </div>
         </div>
 
-        <!-- Tags -->
         <div v-if="cocktail.tags && cocktail.tags.length > 0" class="flex flex-wrap gap-2">
           <span
             v-for="tag in cocktail.tags"
@@ -107,7 +108,6 @@
           </span>
         </div>
 
-        <!-- Delete Button -->
         <div v-if="cocktail.isCustom" class="pt-4 border-t border-slate-700/50">
           <button
             @click="$emit('delete', cocktail.id)"
@@ -127,11 +127,13 @@ import type { Cocktail } from '../types/cocktail'
 
 const props = defineProps<{
   cocktail: Cocktail
+  isFavorite: boolean
 }>()
 
 defineEmits<{
   'close': []
   'delete': [id: string]
+  'toggleFavorite': [id: string]
 }>()
 
 const difficultyLabel = computed(() => {

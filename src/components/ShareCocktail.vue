@@ -18,7 +18,7 @@
       </div>
 
       <div class="px-6 py-6 space-y-6">
-        <div ref="cardRef" class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6">
           <div class="text-center mb-4">
             <h3 class="text-2xl font-bold text-white mb-1">{{ cocktail.name }}</h3>
             <p class="text-slate-400 text-sm">{{ cocktail.nameEn }}</p>
@@ -101,10 +101,7 @@ const emit = defineEmits<{
   'close': []
 }>()
 
-<<<<<<< HEAD
-=======
 const cardRef = ref<HTMLElement | null>(null)
->>>>>>> main
 const copied = ref(false)
 
 function copyToClipboard() {

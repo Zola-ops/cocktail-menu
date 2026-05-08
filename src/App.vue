@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <div class="min-h-screen relative overflow-hidden">
+    <div class="grid-bg"></div>
     <Header 
       v-model:keyword="filters.keyword"
       @add="showAddModal = true"
@@ -18,30 +19,32 @@
     />
 
     <main class="container mx-auto px-4 py-6">
-      <div class="mb-4 flex items-center justify-between">
-        <div class="text-slate-400">
-          共 {{ cocktails.length }} 款调酒
+      <div class="mb-6 flex items-center justify-between">
+        <div class="text-[var(--neon-cyan)] glow-text-cyan" style="font-family: 'Orbitron', monospace; letter-spacing: 2px;">
+          <span class="text-[var(--neon-pink)] glow-text-pink">//</span> 共 {{ cocktails.length }} 款调酒
         </div>
-        <div class="flex gap-2">
+        <div class="flex gap-3">
           <button
             @click="filters.showFavorites = !filters.showFavorites"
             :class="[
-              'px-3 py-1.5 rounded-full text-sm font-medium transition',
+              'px-4 py-2 rounded-full text-sm font-semibold transition-all',
               filters.showFavorites
-                ? 'bg-red-500 text-white'
-                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                ? 'bg-neon-pink-gradient text-white shadow-[var(--glow-pink)]'
+                : 'bg-cyber-dark-2 text-neon-pink border border-neon-pink/30 hover:border-neon-pink hover:shadow-[var(--glow-pink)]'
             ]"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
           >
             {{ filters.showFavorites ? '❤️ 已收藏' : '🤍 收藏' }}
           </button>
           <button
             @click="filters.showCustomOnly = !filters.showCustomOnly"
             :class="[
-              'px-3 py-1.5 rounded-full text-sm font-medium transition',
+              'px-4 py-2 rounded-full text-sm font-semibold transition-all',
               filters.showCustomOnly
-                ? 'bg-blue-500 text-white'
-                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                ? 'bg-neon-cyan-gradient text-cyber-dark shadow-[var(--glow-cyan)]'
+                : 'bg-cyber-dark-2 text-neon-cyan border border-neon-cyan/30 hover:border-neon-cyan hover:shadow-[var(--glow-cyan)]'
             ]"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
           >
             {{ filters.showCustomOnly ? '✨ 我的创作' : '📝 创作' }}
           </button>
@@ -60,12 +63,15 @@
         />
       </div>
 
-      <div v-if="cocktails.length === 0" class="text-center py-20 text-slate-500">
+      <div v-if="cocktails.length === 0" class="text-center py-20">
         <div class="text-6xl mb-4">🍸</div>
-        <div class="text-xl">没有找到匹配的调酒</div>
+        <div class="text-xl text-[var(--neon-cyan)] mb-4" style="font-family: 'Orbitron', monospace;">
+          没有找到匹配的调酒
+        </div>
         <button 
           @click="clearFilters"
-          class="mt-4 px-4 py-2 bg-orange-500/20 text-orange-400 rounded-lg hover:bg-orange-500/30 transition"
+          class="px-4 py-2 bg-[var(--neon-pink)]/20 text-[var(--neon-pink)] rounded-lg hover:bg-[var(--neon-pink)]/30 transition border border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)]"
+          style="font-family: 'Orbitron', monospace;"
         >
           清除筛选
         </button>

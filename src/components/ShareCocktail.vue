@@ -101,6 +101,7 @@ const emit = defineEmits<{
   'close': []
 }>()
 
+const cardRef = ref<HTMLElement | null>(null)
 const copied = ref(false)
 
 function copyToClipboard() {

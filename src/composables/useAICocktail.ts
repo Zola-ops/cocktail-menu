@@ -500,6 +500,7 @@ export function useAICocktail() {
     }
   }
 
+<<<<<<< HEAD
   function convertAIResponseToCocktail(aiResponse: AICocktailResponse): Cocktail {
     const validBases: BaseSpirit[] = ['威士忌', '金酒', '朗姆酒', '龙舌兰', '伏特加', '白兰地', '无酒精']
     const validTastes: TasteTag[] = ['甜', '酸', '苦', '果味', '草本', '奶香', '气泡', '咸', '辣', '茶香', '泥煤味']

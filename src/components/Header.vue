@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
           <button
             @click="$emit('ai')"
             class="flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto px-5 sm:px-6 py-3 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 bg-gradient-to-r from-[var(--neon-purple)] to-[var(--neon-pink)] hover:opacity-90 text-white shadow-[var(--glow-purple)] hover:shadow-[0_0_30px_rgba(211,0,197,0.9)] active:scale-95"
@@ -52,7 +52,7 @@
             style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
             title="添加调酒"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
             <span class="ml-2">添加</span>

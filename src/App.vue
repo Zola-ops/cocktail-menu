@@ -3,6 +3,7 @@
     <Header 
       v-model:keyword="filters.keyword"
       @add="showAddModal = true"
+      @ai="showAIModal = true"
     />
 
     <FilterBar
@@ -85,6 +86,13 @@
       @close="showAddModal = false"
       @add="handleAdd"
     />
+
+    <AIGenerateCocktail
+      v-if="showAIModal"
+      @close="showAIModal = false"
+      @add="handleAIAdd"
+      @save="handleAISave"
+    />
   </div>
 </template>
 
@@ -97,6 +105,7 @@ import FilterBar from './components/FilterBar.vue'
 import CocktailCard from './components/CocktailCard.vue'
 import CocktailDetail from './components/CocktailDetail.vue'
 import AddCocktail from './components/AddCocktail.vue'
+import AIGenerateCocktail from './components/AIGenerateCocktail.vue'
 
 const {
   cocktails,
@@ -110,10 +119,19 @@ const {
 
 const selectedCocktail = ref<Cocktail | null>(null)
 const showAddModal = ref(false)
+const showAIModal = ref(false)
 
 function handleAdd(cocktail: Omit<Cocktail, 'id' | 'createdAt'>) {
   addCocktail(cocktail)
   showAddModal.value = false
+}
+
+function handleAIAdd(cocktail: Omit<Cocktail, 'id' | 'createdAt'>) {
+  addCocktail(cocktail)
+}
+
+function handleAISave(cocktail: Omit<Cocktail, 'id' | 'createdAt'>) {
+  addCocktail(cocktail)
 }
 
 function handleDelete(id: string) {

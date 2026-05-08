@@ -1,4 +1,4 @@
-import type { Cocktail } from '../types/cocktail'
+import type { Cocktail, BaseSpirit, TasteTag } from '../types/cocktail'
 
 export const cocktails: Cocktail[] = [
   // ===== 威士忌系列 =====
@@ -1514,13 +1514,13 @@ export const cocktails: Cocktail[] = [
 ]
 
 // 获取所有基酒类型
-export const baseSpirits = [
+export const baseSpirits: BaseSpirit[] = [
   '威士忌', '金酒', '朗姆酒', '龙舌兰', '伏特加', '白兰地', '无酒精'
 ]
 
 // 获取所有口味标签
-export const tasteTags = [
-  '甜', '酸', '苦', '果味', '草本', '奶香', '气泡', '咸', '辣', '茶香'
+export const tasteTags: TasteTag[] = [
+  '甜', '酸', '苦', '果味', '草本', '奶香', '气泡', '咸', '辣', '茶香', '泥煤味'
 ]
 
 // 获取所有难度级别

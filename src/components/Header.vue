@@ -29,6 +29,16 @@
 
         <!-- Add Button -->
         <button
+          @click="$emit('ai')"
+          class="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg font-medium transition flex items-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          AI
+        </button>
+
+        <button
           @click="$emit('add')"
           class="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition flex items-center gap-2"
         >
@@ -50,5 +60,6 @@ defineProps<{
 defineEmits<{
   'update:keyword': [value: string]
   'add': []
+  'ai': []
 }>()
 </script>

@@ -57,8 +57,15 @@
             :key="tag"
             @click="toggleSpecialTag(tag)"
             :class="[
+<<<<<<< HEAD
               'option-btn',
               props.specialTags.includes(tag) ? 'active' : ''
+=======
+              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition border',
+              props.specialTags.includes(tag)
+                ? 'bg-purple-500 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
+                : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
+>>>>>>> main
             ]"
           >
             {{ getTagEmoji(tag) }} {{ tag }}
@@ -77,8 +84,15 @@
               :key="diff.value"
               @click="toggleDifficulty(diff.value)"
               :class="[
+<<<<<<< HEAD
                 'option-btn',
                 props.difficulty.includes(diff.value) ? 'active' : ''
+=======
+                'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition border',
+                props.difficulty.includes(diff.value)
+                  ? 'bg-purple-500 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
+                  : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
+>>>>>>> main
               ]"
             >
               {{ diff.label }}

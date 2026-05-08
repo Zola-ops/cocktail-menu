@@ -45,10 +45,10 @@
                   :key="base"
                   @click="toggleSelection(selectedBases, base)"
                   :class="[
-                    'px-3 py-2 rounded-lg text-sm font-medium transition',
+                    'px-3 py-2 rounded-lg text-sm font-medium transition border',
                     selectedBases.includes(base)
-                      ? 'bg-orange-500 text-white'
-                      : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50'
+                      ? 'bg-orange-500 text-white border-orange-400/50 shadow-lg shadow-orange-500/20'
+                      : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
                   ]"
                 >
                   {{ base }}
@@ -68,10 +68,10 @@
                   :key="fruit"
                   @click="toggleSelection(selectedFruits, fruit)"
                   :class="[
-                    'px-3 py-2 rounded-lg text-sm font-medium transition',
+                    'px-3 py-2 rounded-lg text-sm font-medium transition border',
                     selectedFruits.includes(fruit)
-                      ? 'bg-green-500 text-white'
-                      : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50'
+                      ? 'bg-emerald-500 text-white border-emerald-400/50 shadow-lg shadow-emerald-500/20'
+                      : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
                   ]"
                 >
                   {{ fruit }}
@@ -106,10 +106,10 @@
                   :key="drink"
                   @click="toggleSelection(selectedSoftDrinks, drink)"
                   :class="[
-                    'px-3 py-2 rounded-lg text-sm font-medium transition',
+                    'px-3 py-2 rounded-lg text-sm font-medium transition border',
                     selectedSoftDrinks.includes(drink)
-                      ? 'bg-cyan-500 text-white'
-                      : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50'
+                      ? 'bg-cyan-500 text-white border-cyan-400/50 shadow-lg shadow-cyan-500/20'
+                      : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
                   ]"
                 >
                   {{ drink }}
@@ -144,10 +144,10 @@
                   :key="mood"
                   @click="toggleSelection(selectedMoods, mood)"
                   :class="[
-                    'px-3 py-2 rounded-lg text-sm font-medium transition',
+                    'px-3 py-2 rounded-lg text-sm font-medium transition border',
                     selectedMoods.includes(mood)
-                      ? 'bg-purple-500 text-white'
-                      : 'bg-slate-700/50 text-slate-300 hover:bg-slate-600/50'
+                      ? 'bg-purple-500 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
+                      : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
                   ]"
                 >
                   {{ mood }}
@@ -186,7 +186,7 @@
             <button
               @click="handleGenerateWithOptions"
               :disabled="isGenerating || !hasAnySelection"
-              class="flex-1 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="flex-1 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 disabled:from-slate-600 disabled:to-slate-700 disabled:text-slate-300 disabled:cursor-not-allowed disabled:shadow-none"
             >
               <span>🎯 按选项生成</span>
             </button>

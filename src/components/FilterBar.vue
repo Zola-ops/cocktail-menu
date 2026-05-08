@@ -1,14 +1,14 @@
 <template>
-  <div class="container mx-auto px-4 py-3 sm:py-4">
+  <div class="w-full px-4 py-3 sm:py-4">
     <button
-      class="sm:hidden w-full flex items-center justify-between py-3 text-sm text-neon-cyan hover:text-neon-pink transition-all"
+      class="sm:hidden w-full flex items-center justify-between py-3 text-sm text-neon-cyan hover:text-neon-pink transition-all border-b border-neon-cyan/20"
       @click="isExpanded = !isExpanded"
     >
       <span class="glow-text-cyan" style="font-family: 'Orbitron', monospace; letter-spacing: 2px;">&gt; 筛选条件</span>
-      <span class="text-neon-pink text-lg">▼</span>
+      <span class="text-neon-pink text-lg transition-transform duration-300" :class="isExpanded ? 'rotate-180' : ''">▼</span>
     </button>
 
-    <div class="overflow-hidden transition-all duration-300" :class="isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0 sm:max-h-[1000px] sm:opacity-100'">
+    <div class="overflow-hidden transition-all duration-300" :class="isExpanded ? 'max-h-[60vh] opacity-100' : 'max-h-0 opacity-0 sm:max-h-[1000px] sm:opacity-100'">
       <div class="mb-3 sm:mb-4">
         <div class="text-xs sm:text-sm text-neon-pink glow-text-pink mb-2" style="font-family: 'Orbitron', monospace; letter-spacing: 1px;">
           <span class="text-neon-cyan glow-text-cyan">//</span> 基酒选择

@@ -118,7 +118,7 @@ body::after {
 
 @media (max-width: 640px) {
   .container {
-    padding: 0 12px;
+    padding: 0 16px;
   }
 }
 
@@ -214,11 +214,17 @@ body::after {
 
 @media (max-width: 640px) {
   .cocktail-card {
-    padding: 14px;
+    padding: 20px;
   }
   
   .cocktail-card:hover {
     transform: translateY(-4px) scale(1.01);
+  }
+
+  .tag-base,
+  .tag-taste {
+    font-size: 13px;
+    padding: 6px 12px;
   }
 }
 
@@ -339,6 +345,10 @@ body::after {
   justify-content: center;
   background: rgba(10, 10, 15, 0.95);
   padding: 16px;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .detail-modal-content {
@@ -346,13 +356,17 @@ body::after {
   border: 1px solid rgba(211, 0, 197, 0.3);
   width: 100%;
   max-width: 500px;
-  max-height: 90vh;
+  max-height: calc(90vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  height: fit-content;
   overflow-y: auto;
   border-radius: 16px;
   box-shadow: 
     0 0 60px rgba(211, 0, 197, 0.3), 
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  align-self: center;
+  margin-top: env(safe-area-inset-top);
+  margin-bottom: env(safe-area-inset-bottom);
 }
 
 @media (min-width: 1024px) {
@@ -605,7 +619,7 @@ input:focus, textarea:focus {
 }
 
 .fade-in-scale {
-  animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .line-clamp-2 {
@@ -744,11 +758,11 @@ input:focus, textarea:focus {
 .text-right { text-align: right; }
 
 @media (max-width: 640px) {
-  .sm\:text-xs { font-size: 12px; line-height: 16px; }
-  .sm\:text-sm { font-size: 14px; line-height: 20px; }
-  .sm\:text-base { font-size: 16px; line-height: 24px; }
-  .sm\:text-lg { font-size: 18px; line-height: 28px; }
-  .sm\:text-xl { font-size: 20px; line-height: 28px; }
+  .sm\:text-xs { font-size: 14px; line-height: 18px; }
+  .sm\:text-sm { font-size: 16px; line-height: 22px; }
+  .sm\:text-base { font-size: 18px; line-height: 26px; }
+  .sm\:text-lg { font-size: 20px; line-height: 28px; }
+  .sm\:text-xl { font-size: 22px; line-height: 30px; }
 }
 
 .bg-cyber-dark { background-color: var(--cyber-dark); }

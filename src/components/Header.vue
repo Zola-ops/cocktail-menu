@@ -33,27 +33,29 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex items-center gap-3 sm:gap-4">
           <button
             @click="$emit('ai')"
-            class="primary-btn touch-friendly flex items-center justify-center w-10 h-10 sm:w-auto sm:h-auto px-3 sm:px-4 py-1.5 sm:py-2"
+            class="flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto px-5 sm:px-6 py-3 sm:py-3 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 bg-gradient-to-r from-[var(--neon-purple)] to-[var(--neon-pink)] hover:opacity-90 text-white shadow-[var(--glow-purple)] hover:shadow-[0_0_25px_rgba(211,0,197,0.9)] active:scale-95"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
             title="AI 生成"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span class="hidden sm:inline ml-1 sm:ml-2" style="font-family: 'Orbitron', monospace; letter-spacing: 1px;">AI</span>
+            <span class="hidden sm:inline ml-2">AI</span>
           </button>
 
           <button
             @click="$emit('add')"
-            class="secondary-btn touch-friendly flex items-center justify-center w-10 h-10 sm:w-auto sm:h-auto px-3 sm:px-4 py-1.5 sm:py-2"
+            class="flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto px-5 sm:px-6 py-3 sm:py-3 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 bg-gradient-to-r from-[var(--neon-cyan)] to-[var(--neon-blue)] hover:opacity-90 text-[var(--cyber-dark)] shadow-[var(--glow-cyan)] hover:shadow-[0_0_25px_rgba(5,217,232,0.9)] active:scale-95"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
             title="添加调酒"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-7 h-7 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
-            <span class="hidden sm:inline ml-1 sm:ml-2" style="font-family: 'Orbitron', monospace; letter-spacing: 1px;">添加</span>
+            <span class="hidden sm:inline ml-2">添加</span>
           </button>
         </div>
       </div>

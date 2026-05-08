@@ -38,6 +38,7 @@
       </div>
     </div>
 
+    <!-- Special Tags -->
     <div class="mb-4">
       <div class="text-sm text-slate-400 mb-2">特色标签</div>
       <div class="flex flex-wrap gap-2">
@@ -57,6 +58,7 @@
       </div>
     </div>
 
+    <!-- Difficulty, Sort and Quick Filters -->
     <div class="flex flex-wrap items-center gap-4">
       <div class="flex items-center gap-4">
         <div class="text-sm text-slate-400">难度</div>

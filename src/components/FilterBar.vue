@@ -28,10 +28,10 @@
             :key="base"
             @click="toggleBase(base)"
             :class="[
-              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition',
+              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition border',
               props.bases.includes(base as BaseSpirit)
-                ? 'bg-orange-500 text-white'
-                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                ? 'bg-orange-500 text-white border-orange-400/50 shadow-lg shadow-orange-500/20'
+                : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
             ]"
           >
             {{ getBaseEmoji(base) }} {{ base }}
@@ -48,10 +48,10 @@
             :key="taste"
             @click="toggleTaste(taste)"
             :class="[
-              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition',
+              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition border',
               props.tastes.includes(taste as TasteTag)
-                ? 'bg-emerald-500 text-white'
-                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                ? 'bg-emerald-500 text-white border-emerald-400/50 shadow-lg shadow-emerald-500/20'
+                : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
             ]"
           >
             {{ getTasteEmoji(taste) }} {{ taste }}
@@ -68,10 +68,10 @@
             :key="tag"
             @click="toggleSpecialTag(tag)"
             :class="[
-              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition',
+              'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition border',
               props.specialTags.includes(tag)
-                ? 'bg-purple-500 text-white'
-                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                ? 'bg-purple-500 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
+                : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
             ]"
           >
             {{ getTagEmoji(tag) }} {{ tag }}
@@ -89,10 +89,10 @@
               :key="diff.value"
               @click="toggleDifficulty(diff.value)"
               :class="[
-                'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition',
+                'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium transition border',
                 props.difficulty.includes(diff.value)
-                  ? 'bg-purple-500 text-white'
-                  : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+                  ? 'bg-purple-500 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
+                  : 'bg-slate-700/70 text-slate-200 border-slate-600/50 hover:bg-slate-600/80 hover:text-white hover:border-slate-500'
               ]"
             >
               {{ diff.label }}

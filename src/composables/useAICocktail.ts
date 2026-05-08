@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import type { Cocktail, BaseSpirit, TasteTag } from '../types/cocktail'
+import { apiConfig, isApiConfigured } from '../config/api'
 
 export interface AIGenerationOptions {
   bases?: BaseSpirit[]
@@ -8,6 +9,133 @@ export interface AIGenerationOptions {
   softDrinks?: string[]
   customKeywords?: string[]
   moodKeywords?: string[]
+}
+
+interface AICocktailResponse {
+  name: string
+  nameEn: string
+  description: string
+  base: string[]
+  taste: string[]
+  difficulty: 'easy' | 'medium' | 'hard'
+  ingredients: { name: string; amount: string }[]
+  steps: string[]
+  glass: string
+  garnish: string
+}
+
+const SYSTEM_PROMPT = `你是一位专业的鸡尾酒调酒师，擅长创作富有诗意的调酒配方。
+
+请根据用户的需求生成一款独特的鸡尾酒配方。
+
+要求：
+1. 名称要有诗意，中文名称要有意境
+2. 英文名称要与中文名称呼应
+3. 配方要实际可行
+4. 难度适中（easy/medium/hard）
+5. 基酒必须是以下之一：威士忌、金酒、朗姆酒、龙舌兰、伏特加、白兰地、无酒精
+6. 口味标签可以是：甜、酸、苦、果味、草本、奶香、气泡、咸、辣、茶香、泥煤味
+
+请以 JSON 格式返回，格式如下：
+{
+  "name": "调酒中文名",
+  "nameEn": "English Name",
+  "description": "一段描述（20字左右）",
+  "base": ["基酒类型"],
+  "taste": ["口味1", "口味2"],
+  "difficulty": "easy/medium/hard",
+  "ingredients": [
+    {"name": "材料名称", "amount": "用量"}
+  ],
+  "steps": ["步骤1", "步骤2", "步骤3"],
+  "glass": "杯型",
+  "garnish": "装饰"
+}`
+
+function buildUserPrompt(options: AIGenerationOptions): string {
+  const parts: string[] = []
+
+  if (options.bases && options.bases.length > 0) {
+    parts.push(`基酒偏好：${options.bases.join('、')}`)
+  }
+
+  if (options.fruits && options.fruits.length > 0) {
+    parts.push(`水果偏好：${options.fruits.join('、')}`)
+  }
+
+  if (options.softDrinks && options.softDrinks.length > 0) {
+    parts.push(`软饮偏好：${options.softDrinks.join('、')}`)
+  }
+
+  if (options.customKeywords && options.customKeywords.length > 0) {
+    parts.push(`自定义关键词：${options.customKeywords.join('、')}`)
+  }
+
+  if (options.moodKeywords && options.moodKeywords.length > 0) {
+    parts.push(`意境风格：${options.moodKeywords.join('、')}`)
+  }
+
+  if (options.tastes && options.tastes.length > 0) {
+    parts.push(`口味偏好：${options.tastes.join('、')}`)
+  }
+
+  if (parts.length === 0) {
+    return '请随机生成一款独特的鸡尾酒配方。'
+  }
+
+  return `请根据以下偏好生成鸡尾酒配方：\n${parts.join('\n')}`
+}
+
+async function call豆包API(userPrompt: string): Promise<AICocktailResponse | null> {
+  if (!isApiConfigured()) {
+    console.warn('API 未配置，使用本地生成')
+    return null
+  }
+
+  try {
+    const response = await fetch(`${apiConfig.baseURL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiConfig.apiKey}`
+      },
+      body: JSON.stringify({
+        model: apiConfig.model,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: userPrompt }
+        ],
+        temperature: apiConfig.temperature,
+        max_tokens: apiConfig.maxTokens
+      })
+    })
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('API 调用失败:', response.status, errorText)
+      return null
+    }
+
+    const data = await response.json()
+    const content = data.choices?.[0]?.message?.content
+
+    if (!content) {
+      console.error('API 返回内容为空')
+      return null
+    }
+
+    const jsonMatch = content.match(/\{[\s\S]*\}/)
+    if (!jsonMatch) {
+      console.error('无法解析 JSON 响应:', content)
+      return null
+    }
+
+    const parsed = JSON.parse(jsonMatch[0]) as AICocktailResponse
+    return parsed
+  } catch (error) {
+    console.error('API 调用错误:', error)
+    return null
+  }
 }
 
 export function useAICocktail() {
@@ -218,20 +346,20 @@ export function useAICocktail() {
   }
 
   function generatePoeticCocktail(options: AIGenerationOptions): Cocktail {
-    const selectedFruits = options.fruits && options.fruits.length > 0 
-      ? options.fruits 
+    const selectedFruits = options.fruits && options.fruits.length > 0
+      ? options.fruits
       : getRandomElements(fruits, Math.floor(Math.random() * 3))
-    
-    const selectedSoftDrinks = options.softDrinks && options.softDrinks.length > 0 
-      ? options.softDrinks 
+
+    const selectedSoftDrinks = options.softDrinks && options.softDrinks.length > 0
+      ? options.softDrinks
       : Math.random() > 0.6 ? getRandomElements(softDrinks, Math.floor(Math.random() * 2) + 1) : []
 
-    let selectedTastes = options.tastes && options.tastes.length > 0 
-      ? options.tastes 
+    let selectedTastes = options.tastes && options.tastes.length > 0
+      ? options.tastes
       : getRandomElements(['甜', '酸', '果味', '气泡', '草本'], Math.floor(Math.random() * 3) + 1) as TasteTag[]
 
-    const primaryBase = options.bases && options.bases.length > 0 
-      ? pickOne(options.bases) 
+    const primaryBase = options.bases && options.bases.length > 0
+      ? pickOne(options.bases)
       : pickOne(baseSpirits)
 
     const customKeywords = options.customKeywords || []
@@ -241,7 +369,7 @@ export function useAICocktail() {
 
     const nameData = poeticNames[primaryBase] || poeticNames['威士忌']
     let nameIndex = Math.floor(Math.random() * nameData.names.length)
-    
+
     if (allKeywords.length > 0) {
       const keywordStr = allKeywords.join('')
       nameIndex = Math.abs(keywordStr.split('').reduce((a, b) => a + b.charCodeAt(0), 0)) % nameData.names.length
@@ -372,20 +500,62 @@ export function useAICocktail() {
     }
   }
 
+  function convertAIResponseToCocktail(aiResponse: AICocktailResponse): Cocktail {
+    const validBases: BaseSpirit[] = ['威士忌', '金酒', '朗姆酒', '龙舌兰', '伏特加', '白兰地', '无酒精']
+    const validTastes: TasteTag[] = ['甜', '酸', '苦', '果味', '草本', '奶香', '气泡', '咸', '辣', '茶香', '泥煤味']
+
+    const base = aiResponse.base.filter(b => validBases.includes(b as BaseSpirit))
+    const taste = aiResponse.taste.filter(t => validTastes.includes(t as TasteTag))
+
+    const specialTags = ['AI创作']
+    if (taste.includes('果味')) specialTags.push('果味')
+    if (taste.includes('气泡')) specialTags.push('气泡')
+    if (taste.includes('草本')) specialTags.push('草本')
+
+    return {
+      id: `ai-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+      name: aiResponse.name,
+      nameEn: aiResponse.nameEn || aiResponse.name,
+      description: aiResponse.description,
+      base: base.length > 0 ? base as BaseSpirit[] : ['威士忌'],
+      taste: taste.length > 0 ? taste as TasteTag[] : ['甜'],
+      difficulty: aiResponse.difficulty || 'medium',
+      ingredients: aiResponse.ingredients || [],
+      steps: aiResponse.steps || [],
+      glass: aiResponse.glass || '古典杯',
+      garnish: aiResponse.garnish || '',
+      tags: specialTags,
+      isCustom: true,
+      createdAt: new Date().toISOString(),
+    }
+  }
+
   async function generateCocktail(options: AIGenerationOptions = {}): Promise<Cocktail | null> {
     isGenerating.value = true
     error.value = null
     generatedCocktail.value = null
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 600 + Math.random() * 600))
+      const userPrompt = buildUserPrompt(options)
+      const aiResponse = await call豆包API(userPrompt)
+
+      if (aiResponse) {
+        const cocktail = convertAIResponseToCocktail(aiResponse)
+        generatedCocktail.value = cocktail
+        return cocktail
+      }
+
+      const fallbackDelay = 600 + Math.random() * 600
+      await new Promise(resolve => setTimeout(resolve, fallbackDelay))
 
       const cocktail = generatePoeticCocktail(options)
       generatedCocktail.value = cocktail
       return cocktail
     } catch (e) {
       error.value = e instanceof Error ? e.message : '生成调酒时出错'
-      return null
+      const cocktail = generatePoeticCocktail(options)
+      generatedCocktail.value = cocktail
+      return cocktail
     } finally {
       isGenerating.value = false
     }

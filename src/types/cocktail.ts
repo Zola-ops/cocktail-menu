@@ -49,4 +49,8 @@ export interface FilterState {
   tastes: TasteTag[]
   difficulty: string[]
   keyword: string
+  specialTags: string[]
+  sortBy: 'name' | 'difficulty' | 'createdAt'
+  showFavorites: boolean
+  showCustomOnly: boolean
 }

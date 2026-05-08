@@ -1,23 +1,50 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-    <!-- Header -->
     <Header 
       v-model:keyword="filters.keyword"
       @add="showAddModal = true"
     />
 
-    <!-- Filter Bar -->
     <FilterBar
       v-model:bases="filters.bases"
       v-model:tastes="filters.tastes"
       v-model:difficulty="filters.difficulty"
+      v-model:specialTags="filters.specialTags"
+      v-model:sortBy="filters.sortBy"
+      v-model:showFavorites="filters.showFavorites"
+      v-model:showCustomOnly="filters.showCustomOnly"
       @clear="clearFilters"
     />
 
-    <!-- Cocktail List -->
     <main class="container mx-auto px-4 py-6">
-      <div class="mb-4 text-slate-400">
-        共 {{ cocktails.length }} 款调酒
+      <div class="mb-4 flex items-center justify-between">
+        <div class="text-slate-400">
+          共 {{ cocktails.length }} 款调酒
+        </div>
+        <div class="flex gap-2">
+          <button
+            @click="filters.showFavorites = !filters.showFavorites"
+            :class="[
+              'px-3 py-1.5 rounded-full text-sm font-medium transition',
+              filters.showFavorites
+                ? 'bg-red-500 text-white'
+                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+            ]"
+          >
+            {{ filters.showFavorites ? '❤️ 已收藏' : '🤍 收藏' }}
+          </button>
+          <button
+            @click="filters.showCustomOnly = !filters.showCustomOnly"
+            :class="[
+              'px-3 py-1.5 rounded-full text-sm font-medium transition',
+              filters.showCustomOnly
+                ? 'bg-blue-500 text-white'
+                : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50'
+            ]"
+          >
+            {{ filters.showCustomOnly ? '✨ 我的创作' : '📝 创作' }}
+          </button>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -25,8 +52,10 @@
           v-for="cocktail in cocktails"
           :key="cocktail.id"
           :cocktail="cocktail"
+          :isFavorite="isFavorite(cocktail.id)"
           @click="selectedCocktail = cocktail"
           @delete="handleDelete"
+          @toggleFavorite="toggleFavorite"
         />
       </div>
 
@@ -42,15 +71,15 @@
       </div>
     </main>
 
-    <!-- Detail Modal -->
     <CocktailDetail
       v-if="selectedCocktail"
       :cocktail="selectedCocktail"
+      :isFavorite="isFavorite(selectedCocktail.id)"
       @close="selectedCocktail = null"
       @delete="handleDelete"
+      @toggleFavorite="toggleFavorite"
     />
 
-    <!-- Add Modal -->
     <AddCocktail
       v-if="showAddModal"
       @close="showAddModal = false"
@@ -75,6 +104,8 @@ const {
   clearFilters,
   addCocktail,
   removeCocktail,
+  toggleFavorite,
+  isFavorite,
 } = useCocktails()
 
 const selectedCocktail = ref<Cocktail | null>(null)

@@ -1,8 +1,8 @@
 <template>
-  <div class="fixed inset-0 z-50 modal-overlay" @click.self="$emit('close')">
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4" @click.self="$emit('close')">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="$emit('close')"></div>
     
-    <div class="absolute bottom-0 left-0 right-0 max-h-[90vh] overflow-y-auto modal-content rounded-t-3xl slide-up">
+    <div class="relative w-full max-w-lg max-h-[85vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-slate-700/50 fade-in-scale">
       <div class="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-6 py-4">
         <div class="flex items-center justify-between">
           <div>

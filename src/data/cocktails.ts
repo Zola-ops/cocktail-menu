@@ -26,8 +26,6 @@ export const cocktails: Cocktail[] = [
     glass: '古典杯',
     description: '最经典的威士忌调酒，简单却深邃',
     isCustom: false,
-    image: 'https://picsum.photos/seed/old-fashioned/400/400',
-    image: 'https://picsum.photos/seed/oldfashioned/400/400',
   },
   {
     id: 'manhattan',
@@ -52,7 +50,6 @@ export const cocktails: Cocktail[] = [
     glass: '马提尼杯',
     description: '优雅的威士忌调酒，苦甜平衡',
     isCustom: false,
-    image: 'https://picsum.photos/seed/manhattan/400/400',
   },
   {
     id: 'whiskey-sour',
@@ -78,7 +75,6 @@ export const cocktails: Cocktail[] = [
     glass: '古典杯',
     description: '酸甜平衡的经典，加蛋清更丝滑',
     isCustom: false,
-    image: 'https://picsum.photos/seed/whiskey-sour/400/400',
   },
   {
     id: 'highball',
@@ -102,7 +98,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '日本最流行的喝法，简单清爽',
     isCustom: false,
-    image: 'https://picsum.photos/seed/highball/400/400',
   },
   {
     id: 'irish-coffee',
@@ -128,7 +123,6 @@ export const cocktails: Cocktail[] = [
     glass: '爱尔兰咖啡杯',
     description: '咖啡与威士忌的完美融合',
     isCustom: false,
-    image: 'https://picsum.photos/seed/irish-coffee/400/400',
   },
 
   // ===== 金酒系列 =====
@@ -155,7 +149,6 @@ export const cocktails: Cocktail[] = [
     glass: '马提尼杯',
     description: '007的最爱，金酒的极致展现',
     isCustom: false,
-    image: 'https://picsum.photos/seed/martini/400/400',
   },
   {
     id: 'gin-tonic',
@@ -180,7 +173,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '最简单的经典，金酒爱好者必备',
     isCustom: false,
-    image: 'https://picsum.photos/seed/gin-tonic/400/400',
   },
   {
     id: 'negroni',
@@ -205,7 +197,6 @@ export const cocktails: Cocktail[] = [
     glass: '古典杯',
     description: '苦甜平衡的意式经典',
     isCustom: false,
-    image: 'https://picsum.photos/seed/negroni/400/400',
   },
   {
     id: 'gin-fizz',
@@ -230,7 +221,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '清爽气泡感，夏日必备',
     isCustom: false,
-    image: 'https://picsum.photos/seed/gin-fizz/400/400',
   },
   {
     id: 'singapore-sling',
@@ -258,7 +248,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '新加坡莱佛士酒店的招牌',
     isCustom: false,
-    image: 'https://picsum.photos/seed/singapore-sling/400/400',
   },
 
   // ===== 朗姆酒系列 =====
@@ -289,7 +278,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '古巴经典，清爽解暑',
     isCustom: false,
-    image: 'https://picsum.photos/seed/mojito/400/400',
   },
   {
     id: 'pina-colada',
@@ -313,7 +301,6 @@ export const cocktails: Cocktail[] = [
     glass: '飓风杯',
     description: '热带风情，仿佛置身海滩',
     isCustom: false,
-    image: 'https://picsum.photos/seed/pina-colada/400/400',
   },
   {
     id: 'mai-tai',
@@ -338,7 +325,6 @@ export const cocktails: Cocktail[] = [
     glass: '古典杯',
     description: '朗姆酒的经典调配',
     isCustom: false,
-    image: 'https://picsum.photos/seed/mai-tai/400/400',
   },
   {
     id: 'daiquiri',
@@ -361,7 +347,6 @@ export const cocktails: Cocktail[] = [
     glass: '马提尼杯',
     description: '海明威最爱的简单调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/daiquiri/400/400',
   },
 
   // ===== 龙舌兰系列 =====
@@ -389,7 +374,6 @@ export const cocktails: Cocktail[] = [
     glass: '玛格丽特杯',
     description: '龙舌兰的经典，酸甜咸的完美结合',
     isCustom: false,
-    image: 'https://picsum.photos/seed/margarita/400/400',
   },
   {
     id: 'tequila-sunrise',
@@ -414,7 +398,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '渐变色像日出一样美丽',
     isCustom: false,
-    image: 'https://picsum.photos/seed/tequila-sunrise/400/400',
   },
   {
     id: 'mexican-mule',
@@ -438,7 +421,6 @@ export const cocktails: Cocktail[] = [
     glass: '铜杯',
     description: '莫斯科骡子的龙舌兰版本',
     isCustom: false,
-    image: 'https://picsum.photos/seed/mexican-mule/400/400',
   },
   {
     id: 'paloma',
@@ -465,7 +447,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '墨西哥最受欢迎的龙舌兰调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/paloma/400/400',
   },
 
   // ===== 伏特加系列 =====
@@ -495,7 +476,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '咸辣口的早午餐调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/bloody-mary/400/400',
   },
   {
     id: 'vodka-soda',
@@ -519,7 +499,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '最简单的低卡调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/vodka-soda/400/400',
   },
   {
     id: 'moscow-mule',
@@ -543,7 +522,6 @@ export const cocktails: Cocktail[] = [
     glass: '铜杯',
     description: '姜汁啤酒的辛辣与伏特加的完美结合',
     isCustom: false,
-    image: 'https://picsum.photos/seed/moscow-mule/400/400',
   },
   {
     id: 'cosmopolitan',
@@ -567,7 +545,6 @@ export const cocktails: Cocktail[] = [
     glass: '马提尼杯',
     description: '欲望都市的标志性调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/cosmopolitan/400/400',
   },
   {
     id: 'white-russian',
@@ -591,7 +568,6 @@ export const cocktails: Cocktail[] = [
     glass: '古典杯',
     description: '大勒博斯基的最爱',
     isCustom: false,
-    image: 'https://picsum.photos/seed/white-russian/400/400',
   },
   {
     id: 'screwdriver',
@@ -614,7 +590,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '最简单的伏特加调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/screwdriver/400/400',
   },
 
   // ===== 白兰地系列 =====
@@ -641,7 +616,6 @@ export const cocktails: Cocktail[] = [
     glass: '马提尼杯',
     description: '一战时期的经典调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/sidecar/400/400',
   },
   {
     id: 'angel-kiss',
@@ -664,7 +638,6 @@ export const cocktails: Cocktail[] = [
     glass: '利口酒杯',
     description: '分层美丽的甜酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/angel-kiss/400/400',
   },
 
   // ===== 无酒精系列 =====
@@ -693,7 +666,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '不含酒精的清爽选择',
     isCustom: false,
-    image: 'https://picsum.photos/seed/virgin-mojito/400/400',
   },
   {
     id: 'shirley-temple',
@@ -716,7 +688,6 @@ export const cocktails: Cocktail[] = [
     glass: '高球杯',
     description: '以童星雪莉命名的经典无酒精调酒',
     isCustom: false,
-    image: 'https://picsum.photos/seed/shirley-temple/400/400',
   },
 
   // ===== 网红调酒 =====
@@ -746,7 +717,6 @@ export const cocktails: Cocktail[] = [
     description: '渐变日落色，热带风情满满',
     tags: ['网红', '高颜值'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/sunset-rider/400/400',
   },
   {
     id: 'peach-oolong-fizz',
@@ -773,7 +743,6 @@ export const cocktails: Cocktail[] = [
     description: '茶香与果味的完美结合',
     tags: ['网红', '无酒精'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/peach-oolong-fizz/400/400',
   },
   {
     id: 'coconut-espresso-martini',
@@ -799,7 +768,6 @@ export const cocktails: Cocktail[] = [
     description: '咖啡爱好者的最爱',
     tags: ['网红', '咖啡'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/coconut-espresso-martini/400/400',
   },
   {
     id: 'strawberry-mojito',
@@ -828,7 +796,6 @@ export const cocktails: Cocktail[] = [
     description: '草莓控必点',
     tags: ['网红', '果味'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/strawberry-mojito/400/400',
   },
   {
     id: 'grapefruit-gin-fizz',
@@ -854,7 +821,6 @@ export const cocktails: Cocktail[] = [
     description: '清新果味，颜值超高',
     tags: ['网红', '清爽'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/grapefruit-gin-fizz/400/400',
   },
   {
     id: 'lychee-fizz',
@@ -880,7 +846,6 @@ export const cocktails: Cocktail[] = [
     description: '东方风味，清甜可口',
     tags: ['网红', '东方风味'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/lychee-fizz/400/400',
   },
   {
     id: 'espresso-martini',
@@ -906,7 +871,6 @@ export const cocktails: Cocktail[] = [
     description: '提神醒脑的咖啡调酒',
     tags: ['网红', '咖啡'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/espresso-martini/400/400',
   },
   {
     id: 'aperol-spritz',
@@ -932,7 +896,6 @@ export const cocktails: Cocktail[] = [
     description: '意大利最受欢迎的开胃酒',
     tags: ['网红', '意式'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/aperol-spritz/400/400',
   },
 
   // ===== 更多经典调酒 =====
@@ -957,7 +920,6 @@ export const cocktails: Cocktail[] = [
     description: '致敬电影《教父》的经典调酒',
     tags: ['经典'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/godfather/400/400',
   },
   {
     id: 'sea-breeze',
@@ -982,7 +944,6 @@ export const cocktails: Cocktail[] = [
     description: '清爽的海滨风情',
     tags: ['经典', '果味'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/sea-breeze/400/400',
   },
   {
     id: 'long-island-iced-tea',
@@ -1013,7 +974,6 @@ export const cocktails: Cocktail[] = [
     description: '最著名的烈性鸡尾酒之一，看似冰茶实则酒劲十足',
     tags: ['经典', '烈酒'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/long-island-iced-tea/400/400',
   },
   {
     id: 'caipirinha',
@@ -1039,7 +999,6 @@ export const cocktails: Cocktail[] = [
     description: '巴西国酒，清爽提神',
     tags: ['经典', '南美'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/caipirinha/400/400',
   },
   {
     id: 'mint-julep',
@@ -1065,7 +1024,6 @@ export const cocktails: Cocktail[] = [
     description: '肯塔基赛马的经典饮品',
     tags: ['经典', '美国'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/mint-julep/400/400',
   },
   {
     id: 'french-75',
@@ -1091,7 +1049,6 @@ export const cocktails: Cocktail[] = [
     description: '以一战法国大炮命名的优雅调酒',
     tags: ['经典', '庆祝'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/french-75/400/400',
   },
   {
     id: 'bellini',
@@ -1114,7 +1071,6 @@ export const cocktails: Cocktail[] = [
     description: '威尼斯哈里酒吧的原创经典',
     tags: ['经典', '意式', '果味'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/bellini/400/400',
   },
   {
     id: 'moscow-mule-new',
@@ -1139,7 +1095,6 @@ export const cocktails: Cocktail[] = [
     description: '姜汁啤酒的辛辣与伏特加的完美结合',
     tags: ['经典'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/moscow-mule-new/400/400',
   },
   {
     id: 'aviation',
@@ -1164,7 +1119,6 @@ export const cocktails: Cocktail[] = [
     description: '1910年代美国航空先驱的灵感之作',
     tags: ['经典', '优雅'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/aviation/400/400',
   },
   {
     id: 'between-the-sheets',
@@ -1189,7 +1143,6 @@ export const cocktails: Cocktail[] = [
     description: '法国经典的革命性调酒',
     tags: ['经典', '法式'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/between-the-sheets/400/400',
   },
   {
     id: 'zombie',
@@ -1219,7 +1172,6 @@ export const cocktails: Cocktail[] = [
     description: '极具视觉冲击力的热带派对调酒',
     tags: ['经典', '派对', '热带'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/zombie/400/400',
   },
   {
     id: 'sazerac',
@@ -1246,7 +1198,6 @@ export const cocktails: Cocktail[] = [
     description: '新奥尔良的标志性调酒，美国鸡尾酒之魂',
     tags: ['经典', '美国', '历史'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/sazerac/400/400',
   },
   {
     id: 'derived',
@@ -1270,7 +1221,6 @@ export const cocktails: Cocktail[] = [
     description: '海明威最爱的简单调酒',
     tags: ['经典', '海明威'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/derived/400/400',
   },
   {
     id: 'champagne-cocktail',
@@ -1296,7 +1246,6 @@ export const cocktails: Cocktail[] = [
     description: '庆祝时刻的经典之选',
     tags: ['经典', '庆祝'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/champagne-cocktail/400/400',
   },
   {
     id: 'paper-plane',
@@ -1321,7 +1270,6 @@ export const cocktails: Cocktail[] = [
     description: '2007年鸡尾酒创新大赛的获奖作品',
     tags: ['经典', '现代'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/paper-plane/400/400',
   },
   {
     id: 'last-word',
@@ -1346,7 +1294,6 @@ export const cocktails: Cocktail[] = [
     description: '禁酒令时期的地下经典',
     tags: ['经典', '禁酒令'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/last-word/400/400',
   },
   {
     id: 'penicillin',
@@ -1373,7 +1320,6 @@ export const cocktails: Cocktail[] = [
     description: '2005年纽约鸡尾酒复兴的代表作品',
     tags: ['经典', '现代', '烟熏'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/penicillin/400/400',
   },
   {
     id: 'boulevardier',
@@ -1398,7 +1344,6 @@ export const cocktails: Cocktail[] = [
     description: '内格罗尼的威士忌版本，法式优雅',
     tags: ['经典', '法式'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/boulevardier/400/400',
   },
   {
     id: 'corpse-reviver-2',
@@ -1423,7 +1368,6 @@ export const cocktails: Cocktail[] = [
     description: '1930年代的治疗系调酒',
     tags: ['经典', '禁酒令'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/corpse-reviver-2/400/400',
   },
   {
     id: 'mai-tai-new',
@@ -1449,7 +1393,6 @@ export const cocktails: Cocktail[] = [
     description: '朗姆酒的经典调配',
     tags: ['经典', '热带'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/mai-tai-new/400/400',
   },
   {
     id: 'mimosa',
@@ -1472,7 +1415,6 @@ export const cocktails: Cocktail[] = [
     description: '经典的早午餐饮品',
     tags: ['经典', '早午餐', '庆祝'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/mimosa/400/400',
   },
   {
     id: 'whiskey-cola',
@@ -1497,7 +1439,6 @@ export const cocktails: Cocktail[] = [
     description: '简单直接的经典组合',
     tags: ['经典', '简单'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/whiskey-cola/400/400',
   },
   {
     id: 'dark-n-stormy',
@@ -1521,7 +1462,6 @@ export const cocktails: Cocktail[] = [
     description: '百慕大的国民饮品',
     tags: ['经典', '姜味'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/dark-n-stormy/400/400',
   },
   {
     id: 'gimlet',
@@ -1545,7 +1485,6 @@ export const cocktails: Cocktail[] = [
     description: '据说最初是为海军水手预防坏血病而调',
     tags: ['经典', '海军'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/gimlet/400/400',
   },
   {
     id: 'tequila-buzz',
@@ -1571,7 +1510,6 @@ export const cocktails: Cocktail[] = [
     description: '甜蜜的龙舌兰变奏曲',
     tags: ['现代', '果味'],
     isCustom: false,
-    image: 'https://picsum.photos/seed/tequila-buzz/400/400',
   },
 ]
 

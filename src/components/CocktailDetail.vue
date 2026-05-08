@@ -1,15 +1,18 @@
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center p-4" @click.self="$emit('close')">
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" @click="$emit('close')"></div>
+  <div 
+    class="detail-modal-overlay"
+    @click.self="$emit('close')"
+  >
+    <div class="absolute inset-0 bg-black/70" @click="$emit('close')"></div>
     
-    <div class="relative w-full max-w-lg max-h-[85vh] overflow-y-auto bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl shadow-2xl border border-slate-700/50 fade-in-scale">
-      <div class="sticky top-0 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-2xl font-bold text-white">{{ cocktail.name }}</h2>
-            <p class="text-slate-400">{{ cocktail.nameEn }}</p>
+    <div class="detail-modal-content fade-in-scale">
+      <div class="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-4 sm:px-6 py-3 sm:py-4">
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex-1 min-w-0">
+            <h2 class="text-lg sm:text-2xl font-bold text-white truncate">{{ cocktail.name }}</h2>
+            <p class="text-xs sm:text-sm text-slate-400 truncate">{{ cocktail.nameEn }}</p>
           </div>
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-shrink-0">
             <button
               @click="$emit('toggleFavorite', cocktail.id)"
               class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-800 hover:bg-slate-700 text-xl transition"
@@ -28,8 +31,16 @@
         </div>
       </div>
 
-      <div class="px-6 py-6 space-y-6">
-        <div v-if="cocktail.description" class="text-slate-300">
+      <div class="px-6 py-6 space-y-5">
+        <div v-if="cocktail.image" class="rounded-xl overflow-hidden">
+          <img 
+            :src="cocktail.image" 
+            :alt="cocktail.name"
+            class="w-full h-48 sm:h-56 object-cover"
+          />
+        </div>
+        
+        <div v-if="cocktail.description" class="text-slate-300 text-sm sm:text-base">
           {{ cocktail.description }}
         </div>
 

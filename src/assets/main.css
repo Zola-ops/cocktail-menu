@@ -335,35 +335,24 @@ body::after {
   inset: 0;
   z-index: 50;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  background: rgba(10, 10, 15, 0.9);
-  backdrop-filter: blur(12px);
+  background: rgba(10, 10, 15, 0.95);
+  padding: 16px;
 }
 
 .detail-modal-content {
   background: linear-gradient(180deg, var(--cyber-dark-3) 0%, var(--cyber-dark) 50%, var(--cyber-dark-4) 100%);
   border: 1px solid rgba(211, 0, 197, 0.3);
   width: 100%;
-  max-height: 95vh;
+  max-width: 500px;
+  max-height: 90vh;
   overflow-y: auto;
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px;
   box-shadow: 
     0 0 60px rgba(211, 0, 197, 0.3), 
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-}
-
-@media (min-width: 640px) {
-  .detail-modal-overlay {
-    align-items: center;
-  }
-
-  .detail-modal-content {
-    max-width: 500px;
-    max-height: 90vh;
-    border-radius: 16px;
-  }
 }
 
 @media (min-width: 1024px) {

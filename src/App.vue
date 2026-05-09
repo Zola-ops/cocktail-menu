@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 items-start" style="grid-auto-rows: 1fr;">
         <CocktailCard
           v-for="cocktail in cocktails"
           :key="cocktail.id"

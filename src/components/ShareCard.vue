@@ -1,9 +1,7 @@
 <template>
   <div class="share-card-container">
-    <!-- 隐藏的卡片模板，用于生成图片 -->
     <div ref="cardRef" class="share-card-template">
       <div class="card-bg">
-        <!-- 装饰元素 -->
         <div class="card-decoration">
           <div class="deco-circle deco-1"></div>
           <div class="deco-circle deco-2"></div>
@@ -11,7 +9,6 @@
           <div class="deco-line deco-line-2"></div>
         </div>
 
-        <!-- 主标题 -->
         <div class="card-header">
           <div class="card-title-group">
             <h1 class="card-title">{{ cocktail.name }}</h1>
@@ -20,12 +17,10 @@
           <div class="card-logo">🍸</div>
         </div>
 
-        <!-- 描述 -->
         <div v-if="cocktail.description" class="card-description">
           {{ cocktail.description }}
         </div>
 
-        <!-- 标签 -->
         <div class="card-tags">
           <span v-for="base in cocktail.base" :key="base" class="card-tag card-tag-base">
             {{ base }}
@@ -35,7 +30,6 @@
           </span>
         </div>
 
-        <!-- 配方 -->
         <div class="card-section">
           <h3 class="card-section-title">🧪 配方</h3>
           <div class="card-ingredients">
@@ -46,7 +40,6 @@
           </div>
         </div>
 
-        <!-- 步骤预览 -->
         <div class="card-section">
           <h3 class="card-section-title">📝 制作步骤</h3>
           <div class="card-steps">
@@ -60,7 +53,6 @@
           </div>
         </div>
 
-        <!-- 底部信息 -->
         <div class="card-footer">
           <div class="card-info">
             <span v-if="cocktail.glass">🥃 {{ cocktail.glass }}</span>
@@ -73,14 +65,45 @@
           </div>
         </div>
 
-        <!-- 水印 -->
         <div class="card-watermark">
           下班后的赛博酒馆
         </div>
       </div>
     </div>
 
-    <!-- 操作界面 -->
+    <!-- 分享选项弹窗 -->
+    <div v-if="showShareOptions" class="share-options-overlay" @click.self="showShareOptions = false">
+      <div class="share-options-modal">
+        <div class="share-options-header">
+          <h3 class="share-options-title">选择分享方式</h3>
+          <button @click="showShareOptions = false" class="share-options-close">✕</button>
+        </div>
+        <div class="share-options-list">
+          <button @click="handleShareImage" class="share-option-btn">
+            <div class="share-option-icon" style="background: linear-gradient(135deg, #ff2b6d, #d300c5);">🖼️</div>
+            <div class="share-option-content">
+              <div class="share-option-title">分享图片</div>
+              <div class="share-option-desc">将精美的调酒卡片图片分享给好友</div>
+            </div>
+          </button>
+          <button @click="handleShareLink" class="share-option-btn">
+            <div class="share-option-icon" style="background: linear-gradient(135deg, #05d9e8, #00bcd4);">🔗</div>
+            <div class="share-option-content">
+              <div class="share-option-title">复制链接</div>
+              <div class="share-option-desc">复制应用链接到剪贴板</div>
+            </div>
+          </button>
+          <button @click="handleSaveImage" class="share-option-btn">
+            <div class="share-option-icon" style="background: linear-gradient(135deg, #d300c5, #05d9e8);">💾</div>
+            <div class="share-option-content">
+              <div class="share-option-title">保存到本地</div>
+              <div class="share-option-desc">将卡片图片保存到设备相册</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="share-actions">
       <button @click="handleSaveImage" class="share-btn save-btn" :disabled="isGenerating">
         <svg v-if="isGenerating" class="loading-icon" fill="none" viewBox="0 0 24 24">
@@ -91,7 +114,7 @@
         <span>{{ isGenerating ? '生成中...' : '保存图片' }}</span>
       </button>
       
-      <button @click="handleShare" class="share-btn share-btn-main" :disabled="isGenerating">
+      <button @click="showShareOptions = true" class="share-btn share-btn-main" :disabled="isGenerating">
         <span>📤</span>
         <span>分享</span>
       </button>
@@ -110,6 +133,7 @@ const props = defineProps<{
 
 const cardRef = ref<HTMLElement | null>(null)
 const isGenerating = ref(false)
+const showShareOptions = ref(false)
 
 const difficultyText = computed(() => {
   const map = { easy: '简单', medium: '中等', hard: '困难' }
@@ -121,8 +145,8 @@ async function generateImage(): Promise<Blob | null> {
 
   try {
     const canvas = await html2canvas(cardRef.value, {
-      backgroundColor: null,
-      scale: 2, // 高清图片
+      backgroundColor: '#1a1a2e',
+      scale: 2,
       useCORS: true,
       logging: false
     })
@@ -140,12 +164,12 @@ async function generateImage(): Promise<Blob | null> {
 
 async function handleSaveImage() {
   isGenerating.value = true
+  showShareOptions.value = false
   
   try {
     const blob = await generateImage()
     
     if (blob) {
-      // 创建下载链接
       const url = URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
@@ -163,14 +187,14 @@ async function handleSaveImage() {
   }
 }
 
-async function handleShare() {
+async function handleShareImage() {
   isGenerating.value = true
+  showShareOptions.value = false
   
   try {
     const blob = await generateImage()
     
     if (blob) {
-      // 检查是否支持分享 API
       if (navigator.share && navigator.canShare) {
         const file = new File([blob], `${props.cocktail.name}-调酒配方.png`, { type: 'image/png' })
         
@@ -181,14 +205,12 @@ async function handleShare() {
             files: [file]
           })
         } else {
-          // 如果不支持分享文件，则只分享文字
           await navigator.share({
             title: `${props.cocktail.name} - 调酒配方`,
             text: `${props.cocktail.description}\n\n基酒：${props.cocktail.base.join('、')}\n口味：${props.cocktail.taste.join('、')}`
           })
         }
       } else {
-        // 不支持分享 API，保存图片
         await handleSaveImage()
       }
     }
@@ -201,6 +223,24 @@ async function handleShare() {
     isGenerating.value = false
   }
 }
+
+async function handleShareLink() {
+  showShareOptions.value = false
+  
+  try {
+    const shareText = `${props.cocktail.name}\n${props.cocktail.nameEn}\n\n${props.cocktail.description}\n\n基酒：${props.cocktail.base.join('、')}\n口味：${props.cocktail.taste.join('、')}\n\n来自「下班后的赛博酒馆」`
+    
+    await navigator.clipboard.writeText(shareText)
+    alert('已复制到剪贴板！')
+  } catch (error) {
+    console.error('复制失败:', error)
+    alert('复制失败，请重试')
+  }
+}
+
+function handleShare() {
+  showShareOptions.value = true
+}
 </script>
 
 <style scoped>
@@ -210,7 +250,6 @@ async function handleShare() {
   gap: 16px;
 }
 
-/* 隐藏的卡片模板 */
 .share-card-template {
   position: absolute;
   left: -9999px;
@@ -235,7 +274,6 @@ async function handleShare() {
   min-height: 600px;
 }
 
-/* 装饰元素 */
 .card-decoration {
   position: absolute;
   inset: 0;
@@ -281,7 +319,6 @@ async function handleShare() {
   background: linear-gradient(270deg, transparent, rgba(5, 217, 232, 0.3), transparent);
 }
 
-/* 头部 */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -317,7 +354,6 @@ async function handleShare() {
   filter: drop-shadow(0 0 10px rgba(255, 42, 109, 0.5));
 }
 
-/* 描述 */
 .card-description {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
@@ -328,7 +364,6 @@ async function handleShare() {
   z-index: 1;
 }
 
-/* 标签 */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
@@ -359,7 +394,6 @@ async function handleShare() {
   border: 1px solid rgba(5, 217, 232, 0.4);
 }
 
-/* 配方和步骤区域 */
 .card-section {
   margin-bottom: 16px;
   position: relative;
@@ -442,7 +476,6 @@ async function handleShare() {
   padding-top: 4px;
 }
 
-/* 底部信息 */
 .card-footer {
   display: flex;
   justify-content: space-between;
@@ -487,7 +520,6 @@ async function handleShare() {
   border: 1px solid rgba(244, 67, 54, 0.4);
 }
 
-/* 水印 */
 .card-watermark {
   position: absolute;
   bottom: 12px;
@@ -495,6 +527,129 @@ async function handleShare() {
   font-size: 10px;
   color: rgba(255, 255, 255, 0.3);
   letter-spacing: 1px;
+}
+
+/* 分享选项弹窗 */
+.share-options-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.share-options-modal {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0f 100%);
+  border: 1px solid rgba(211, 0, 197, 0.3);
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.share-options-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.share-options-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f0f0f0;
+  letter-spacing: 1px;
+}
+
+.share-options-close {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: #808080;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.share-options-close:hover {
+  background: rgba(255, 42, 109, 0.2);
+  color: #ff2b6d;
+}
+
+.share-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.share-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.share-option-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(5, 217, 232, 0.3);
+  transform: translateY(-2px);
+}
+
+.share-option-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.share-option-content {
+  flex: 1;
+}
+
+.share-option-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.share-option-desc {
+  font-size: 12px;
+  color: #808080;
+  line-height: 1.4;
 }
 
 /* 操作按钮 */
@@ -521,24 +676,25 @@ async function handleShare() {
 }
 
 .save-btn {
-  background: rgba(5, 217, 232, 0.1);
+  background: rgba(5, 217, 232, 0.15);
   color: #05d9e8;
-  border: 1px solid rgba(5, 217, 232, 0.3);
+  border: 1px solid rgba(5, 217, 232, 0.4);
 }
 
 .save-btn:hover:not(:disabled) {
-  background: rgba(5, 217, 232, 0.2);
-  box-shadow: 0 0 20px rgba(5, 217, 232, 0.3);
+  background: rgba(5, 217, 232, 0.25);
+  box-shadow: 0 0 20px rgba(5, 217, 232, 0.4);
+  transform: translateY(-2px);
 }
 
 .share-btn-main {
   background: linear-gradient(135deg, #ff2b6d, #d300c5);
   color: white;
-  box-shadow: 0 0 20px rgba(255, 42, 109, 0.4);
+  box-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
 }
 
 .share-btn-main:hover:not(:disabled) {
-  box-shadow: 0 0 30px rgba(255, 42, 109, 0.6);
+  box-shadow: 0 0 30px rgba(255, 42, 109, 0.7);
   transform: translateY(-2px);
 }
 

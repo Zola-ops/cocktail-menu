@@ -36,15 +36,18 @@
         <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
           <button
             @click="$emit('ai')"
-            class="ai-button flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto px-5 sm:px-6 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 bg-gradient-to-r from-[var(--neon-purple)] via-[var(--neon-pink)] to-[var(--neon-cyan)] hover:opacity-90 text-white shadow-[var(--glow-purple)] hover:shadow-[0_0_30px_rgba(211,0,197,0.9),0_0_60px_rgba(255,42,109,0.6),0_0_90px_rgba(5,217,232,0.3)] active:scale-95 relative overflow-hidden group"
-            style="font-family: 'Orbitron', monospace; letter-spacing: 1.5px; animation: aiGlow 2s ease-in-out infinite;"
+            class="flex items-center justify-center px-4 sm:px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 text-white shadow-[var(--glow-purple)] hover:shadow-[0_0_30px_rgba(211,0,197,0.9),0_0_60px_rgba(255,42,109,0.6),0_0_90px_rgba(5,217,232,0.3)] active:scale-95 relative overflow-hidden group ai-btn-gradient"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1.5px; min-width: 44px;"
             title="AI 调酒"
           >
+            <div class="absolute inset-0 bg-gradient-to-r from-[var(--neon-purple)] via-[var(--neon-pink)] to-[var(--neon-cyan)] opacity-100"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            <svg class="w-6 h-6 sm:w-5 sm:h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span class="ml-2 whitespace-nowrap relative z-10 hidden sm:inline">⚡ AI</span>
+            <div class="relative z-10 flex items-center gap-2">
+              <svg class="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span class="hidden sm:inline whitespace-nowrap">⚡ AI</span>
+            </div>
           </button>
 
           <button
@@ -90,3 +93,24 @@ defineEmits<{
   'ai': []
 }>()
 </script>
+
+<style scoped>
+.ai-btn-gradient {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink), var(--neon-cyan));
+  background-size: 200% 200%;
+  animation: gradientMove 3s ease infinite;
+}
+
+.ai-btn-gradient:hover {
+  background-position: 100% 100%;
+}
+
+@keyframes gradientMove {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+</style>

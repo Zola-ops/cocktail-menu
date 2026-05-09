@@ -298,24 +298,24 @@
           <div class="flex gap-3">
             <button
               @click="handleAddToCollection"
-              class="flex-1 py-3.5 px-4 bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-purple)] hover:opacity-90 text-white rounded-xl font-bold transition-all duration-300 shadow-[var(--glow-pink)] hover:shadow-[0_0_20px_rgba(255,42,109,0.7)] active:scale-95 text-sm sm:text-base"
+              class="flex-1 py-3.5 px-4 ai-action-btn save-btn text-white rounded-xl font-bold transition-all duration-300 active:scale-95 text-sm sm:text-base"
               style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
             >
-              存入
+              💾 存入
             </button>
             <button
               @click="handleSaveAndShare"
-              class="flex-1 py-3.5 px-4 bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-purple)] hover:opacity-90 text-white rounded-xl font-bold transition-all duration-300 shadow-[var(--glow-pink)] hover:shadow-[0_0_20px_rgba(255,42,109,0.7)] active:scale-95 text-sm sm:text-base"
+              class="flex-1 py-3.5 px-4 ai-action-btn share-btn text-white rounded-xl font-bold transition-all duration-300 active:scale-95 text-sm sm:text-base"
               style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
             >
-              分享
+              📤 分享
             </button>
             <button
               @click="clearGenerated"
-              class="flex-1 py-3.5 px-4 bg-gradient-to-r from-[var(--neon-pink)] to-[var(--neon-purple)] hover:opacity-90 text-white rounded-xl font-bold transition-all duration-300 shadow-[var(--glow-pink)] hover:shadow-[0_0_20px_rgba(255,42,109,0.7)] active:scale-95 text-sm sm:text-base"
+              class="flex-1 py-3.5 px-4 ai-action-btn retry-btn text-white rounded-xl font-bold transition-all duration-300 active:scale-95 text-sm sm:text-base"
               style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
             >
-              再来
+              🔄 再来
             </button>
           </div>
         </div>
@@ -452,12 +452,51 @@ function handleSaveAndShare() {
 
 .tag-taste {
   background: linear-gradient(135deg, rgba(5, 217, 232, 0.2), rgba(5, 217, 232, 0.1));
-  color: var(--neon-cyan);
+  color: #05d9e8;
   border: 1px solid rgba(5, 217, 232, 0.4);
   font-family: 'Orbitron', monospace;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+.ai-action-btn {
+  background: linear-gradient(135deg, #ff2b6d, #d300c5);
+  box-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
+  transition: all 0.3s ease;
+}
+
+.ai-action-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 30px rgba(255, 42, 109, 0.7);
+  transform: translateY(-2px);
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #05d9e8, #ff2b6d);
+  box-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
+}
+
+.save-btn:hover {
+  box-shadow: 0 0 30px rgba(5, 217, 232, 0.7);
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #ff2b6d, #d300c5);
+  box-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
+}
+
+.share-btn:hover {
+  box-shadow: 0 0 30px rgba(255, 42, 109, 0.7);
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #d300c5, #05d9e8);
+  box-shadow: 0 0 20px rgba(211, 0, 197, 0.5);
+}
+
+.retry-btn:hover {
+  box-shadow: 0 0 30px rgba(211, 0, 197, 0.7);
 }
 
 .modal-overlay {

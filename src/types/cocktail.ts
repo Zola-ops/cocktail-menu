@@ -31,6 +31,11 @@ export type BaseSpirit =
   | '伏特加' 
   | '白兰地' 
   | '无酒精'
+  | '清酒'
+  | '梅酒'
+  | '雪利酒'
+  | '波特酒'
+  | '开胃酒'
 
 export type TasteTag = 
   | '甜' 
@@ -44,6 +49,8 @@ export type TasteTag =
   | '辣' 
   | '茶香'
   | '泥煤味'
+  | '鲜'
+  | '花香味'
 
 export interface FilterState {
   bases: BaseSpirit[]

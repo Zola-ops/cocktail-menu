@@ -408,7 +408,7 @@ input:focus, textarea:focus {
 }
 
 .tag-btn {
-  padding: 10px 20px;
+  padding: 10px 18px;
   border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
@@ -421,6 +421,7 @@ input:focus, textarea:focus {
   letter-spacing: 1px;
   position: relative;
   overflow: hidden;
+  min-height: 40px;
 }
 
 .tag-btn::before {
@@ -440,9 +441,10 @@ input:focus, textarea:focus {
 
 @media (max-width: 640px) {
   .tag-btn {
-    padding: 8px 14px;
+    padding: 8px 12px;
     font-size: 12px;
     letter-spacing: 0.5px;
+    min-height: 36px;
   }
 }
 
@@ -467,9 +469,9 @@ input:focus, textarea:focus {
 }
 
 .option-btn {
-  padding: 12px 22px;
+  padding: 10px 18px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid rgba(211, 0, 197, 0.35);
@@ -478,6 +480,7 @@ input:focus, textarea:focus {
   font-family: 'Orbitron', monospace;
   text-transform: uppercase;
   letter-spacing: 1px;
+  min-height: 40px;
 }
 
 .option-btn:hover {
@@ -495,9 +498,9 @@ input:focus, textarea:focus {
 }
 
 .primary-btn {
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
@@ -505,8 +508,9 @@ input:focus, textarea:focus {
   color: white;
   font-family: 'Orbitron', monospace;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   box-shadow: var(--glow-pink);
+  min-height: 44px;
 }
 
 .primary-btn:hover {
@@ -523,9 +527,9 @@ input:focus, textarea:focus {
 }
 
 .secondary-btn {
-  padding: 14px 28px;
+  padding: 12px 24px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid rgba(5, 217, 232, 0.4);
@@ -533,7 +537,8 @@ input:focus, textarea:focus {
   color: var(--neon-cyan);
   font-family: 'Orbitron', monospace;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
+  min-height: 44px;
 }
 
 .secondary-btn:hover {

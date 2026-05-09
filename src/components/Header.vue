@@ -37,13 +37,13 @@
           <button
             @click="$emit('ai')"
             class="flex items-center justify-center px-4 sm:px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 text-white shadow-[var(--glow-purple)] hover:shadow-[0_0_30px_rgba(211,0,197,0.9),0_0_60px_rgba(255,42,109,0.6),0_0_90px_rgba(5,217,232,0.3)] active:scale-95 relative overflow-hidden group ai-btn-gradient"
-            style="font-family: 'Orbitron', monospace; letter-spacing: 1.5px; min-width: 44px;"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px; min-width: 44px;"
             title="AI 调酒"
           >
             <div class="absolute inset-0 bg-gradient-to-r from-[var(--neon-purple)] via-[var(--neon-pink)] to-[var(--neon-cyan)] opacity-100"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             <div class="relative z-10 flex items-center gap-2">
-              <svg class="w-6 h-6 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               <span class="hidden sm:inline whitespace-nowrap">⚡ AI</span>
@@ -52,11 +52,11 @@
 
           <button
             @click="$emit('add')"
-            class="flex items-center justify-center px-4 py-2 rounded-xl font-semibold transition-all duration-300 add-btn-gradient text-white hover:shadow-[var(--glow-cyan)] active:scale-95"
+            class="flex items-center justify-center px-4 py-3 rounded-xl font-semibold transition-all duration-300 add-btn-gradient text-white hover:shadow-[var(--glow-cyan)] active:scale-95"
             style="font-family: 'Orbitron', monospace; letter-spacing: 1px; min-width: 44px;"
             title="添加调酒"
           >
-            <svg class="w-7 h-7 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
             <span class="ml-2 hidden sm:inline">添加</span>

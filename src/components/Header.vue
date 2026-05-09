@@ -10,10 +10,10 @@
           </div>
           <div>
             <h1 class="text-lg sm:text-xl font-bold text-white tracking-wider glow-text-cyan" style="font-family: 'Orbitron', monospace;">
-              <span class="text-[var(--neon-cyan)]">下班后的</span><span class="text-[var(--neon-pink)]">赛博酒馆</span>
+              <span class="text-[var(--neon-cyan)]">{{ isZhCN ? '下班后的' : '' }}</span><span class="text-[var(--neon-pink)]">{{ isZhCN ? '赛博酒馆' : 'Cyberpunk Bar' }}</span>
             </h1>
             <p class="hidden sm:block text-xs text-[var(--neon-pink)] tracking-[0.3em]" style="font-family: 'Orbitron', monospace; text-shadow: var(--glow-pink);">
-              CYBERPUNK BAR
+              {{ isZhCN ? 'CYBERPUNK BAR' : 'AFTERWORK COCKTAILS' }}
             </p>
           </div>
         </div>
@@ -35,28 +35,38 @@
 
         <div class="flex items-center gap-3 sm:gap-4 flex-shrink-0">
           <button
+            @click="toggleLocale"
+            class="flex items-center justify-center px-3 py-2 rounded-lg font-medium transition-all duration-300 bg-[var(--neon-pink)]/20 hover:bg-[var(--neon-pink)]/30 text-[var(--neon-pink)] border border-[var(--neon-pink)]/30 hover:border-[var(--neon-pink)] hover:shadow-[var(--glow-pink)]"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
+            :title="isZhCN ? 'Switch to English' : '切换到中文'"
+          >
+            <span class="text-lg">{{ isZhCN ? '🇺🇸' : '🇨🇳' }}</span>
+            <span class="ml-1 hidden sm:inline text-sm">{{ isZhCN ? 'EN' : '中' }}</span>
+          </button>
+
+          <button
             @click="$emit('ai')"
             class="ai-button flex items-center justify-center w-14 h-14 sm:w-auto sm:h-auto px-5 sm:px-6 py-3 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 bg-gradient-to-r from-[var(--neon-purple)] via-[var(--neon-pink)] to-[var(--neon-cyan)] hover:opacity-90 text-white shadow-[var(--glow-purple)] hover:shadow-[0_0_30px_rgba(211,0,197,0.9),0_0_60px_rgba(255,42,109,0.6),0_0_90px_rgba(5,217,232,0.3)] active:scale-95 relative overflow-hidden group"
             style="font-family: 'Orbitron', monospace; letter-spacing: 1.5px; animation: aiGlow 2s ease-in-out infinite;"
-            title="AI 调酒"
+            :title="t('header.ai')"
           >
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             <svg class="w-6 h-6 sm:w-5 sm:h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
-            <span class="ml-2 whitespace-nowrap relative z-10">⚡ AI</span>
+            <span class="ml-2 whitespace-nowrap relative z-10 hidden sm:inline">{{ t('header.ai') }}</span>
           </button>
 
           <button
             @click="$emit('add')"
             class="flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-300 bg-[var(--neon-cyan)]/20 hover:bg-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] border border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] hover:shadow-[var(--glow-cyan)]"
             style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
-            title="添加调酒"
+            :title="t('header.add')"
           >
             <svg class="w-7 h-7 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
-            <span class="ml-2">添加</span>
+            <span class="ml-2 hidden sm:inline">{{ t('header.add') }}</span>
           </button>
         </div>
       </div>
@@ -80,7 +90,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { useI18n } from '../composables/useI18n'
+
+const props = defineProps<{
   keyword: string
 }>()
 
@@ -89,4 +101,6 @@ defineEmits<{
   'add': []
   'ai': []
 }>()
+
+const { t, toggleLocale, isZhCN } = useI18n()
 </script>

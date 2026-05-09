@@ -60,6 +60,11 @@ const iconEmoji = computed(() => {
     '伏特加': '🧊',
     '白兰地': '🍷',
     '无酒精': '🥤',
+    '清酒': '🍶',
+    '梅酒': '🍾',
+    '雪利酒': '🍷',
+    '波特酒': '🍷',
+    '开胃酒': '🍹',
   }
 
   const primaryBase = props.base[0]
@@ -75,6 +80,11 @@ const iconLabel = computed(() => {
     '伏特加': 'Vodka',
     '白兰地': 'Brandy',
     '无酒精': 'Mocktail',
+    '清酒': 'Sake',
+    '梅酒': 'Umeshu',
+    '雪利酒': 'Sherry',
+    '波特酒': 'Port',
+    '开胃酒': 'Aperitif',
   }
 
   const primaryBase = props.base[0]

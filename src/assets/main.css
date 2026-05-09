@@ -378,6 +378,19 @@ body::after {
   }
 }
 
+@media (max-width: 640px) {
+  .detail-modal-content {
+    border-radius: 16px;
+    padding: 0;
+  }
+  
+  .detail-modal-overlay {
+    padding: 12px;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 button {
   cursor: pointer;
   border: none;

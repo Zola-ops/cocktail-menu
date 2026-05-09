@@ -58,7 +58,7 @@
 
         <div class="bg-slate-800/50 rounded-xl p-4 sm:p-5 border border-slate-700/50">
           <h3 class="text-base sm:text-lg font-bold text-[var(--neon-cyan)] mb-4" style="font-family: 'Orbitron', monospace;">
-            🧪 {{ locale === 'zh-CN' ? '配方' : 'Recipe' }}
+            🧪 配方
           </h3>
           <div class="space-y-3">
             <div
@@ -74,7 +74,7 @@
 
         <div class="bg-slate-800/50 rounded-xl p-4 sm:p-5 border border-slate-700/50">
           <h3 class="text-base sm:text-lg font-bold text-[var(--neon-cyan)] mb-4" style="font-family: 'Orbitron', monospace;">
-            📝 {{ locale === 'zh-CN' ? '制作步骤' : 'Instructions' }}
+            📝 制作步骤
           </h3>
           <div class="space-y-4">
             <div
@@ -92,22 +92,22 @@
 
         <div class="grid grid-cols-2 gap-4">
           <div v-if="cocktail.glass" class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
-            <div class="text-xs text-slate-500 mb-1">{{ locale === 'zh-CN' ? '杯型' : 'Glass' }}</div>
+            <div class="text-xs text-slate-500 mb-1">杯型</div>
             <div class="text-white font-medium">{{ cocktail.glass }}</div>
           </div>
           <div v-if="cocktail.garnish" class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
-            <div class="text-xs text-slate-500 mb-1">{{ locale === 'zh-CN' ? '装饰' : 'Garnish' }}</div>
+            <div class="text-xs text-slate-500 mb-1">装饰</div>
             <div class="text-white font-medium">{{ cocktail.garnish }}</div>
           </div>
         </div>
 
         <div v-if="cocktail.isCustom" class="pt-4 border-t border-slate-700/50">
           <button
-            @click="confirmDelete"
+            @click="$emit('delete', cocktail.id)"
             class="w-full px-4 py-3 rounded-lg font-medium transition bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 hover:border-red-500"
             style="font-family: 'Orbitron', monospace;"
           >
-            {{ locale === 'zh-CN' ? '🗑️ 删除这款自定义调酒' : '🗑️ Delete Custom Cocktail' }}
+            🗑️ 删除这款自定义调酒
           </button>
         </div>
       </div>
@@ -116,11 +116,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { Cocktail } from '../types/cocktail'
-import { useI18n } from '../composables/useI18n'
 
-const props = defineProps<{
+defineProps<{
   cocktail: Cocktail
   isFavorite: boolean
 }>()
@@ -130,13 +128,4 @@ defineEmits<{
   'delete': [id: string]
   'toggleFavorite': [id: string]
 }>()
-
-const { locale } = useI18n()
-const showConfirmDelete = ref(false)
-
-const confirmDelete = () => {
-  if (confirm(locale.value === 'zh-CN' ? '确定要删除这款自定义调酒吗？' : 'Are you sure you want to delete this cocktail?')) {
-    // Emit delete event will be handled by parent
-  }
-}
 </script>

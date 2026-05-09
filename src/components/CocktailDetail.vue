@@ -1,6 +1,6 @@
 <template>
-  <div class="cocktail-detail-overlay" @click.self="$emit('close')">
-    <div class="cocktail-detail-modal fade-in-scale">
+  <div class="detail-modal-overlay" @click.self="$emit('close')">
+    <div class="detail-modal-content fade-in-scale">
       <div class="detail-header-gradient"></div>
       
       <div class="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-5 sm:px-6 py-4 sm:py-4">
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      <div class="px-5 sm:px-6 py-6 space-y-6">
+      <div class="px-5 sm:px-6 py-6 space-y-6 max-h-[calc(90vh-80px)] overflow-y-auto">
         <div v-if="cocktail.image" class="relative rounded-xl overflow-hidden">
           <img 
             :src="cocktail.image" 

@@ -65,6 +65,7 @@ const iconEmoji = computed(() => {
     '雪利酒': '🍷',
     '波特酒': '🍷',
     '开胃酒': '🍹',
+    '白酒': '🥢',
   }
 
   const primaryBase = props.base[0]
@@ -85,6 +86,7 @@ const iconLabel = computed(() => {
     '雪利酒': 'Sherry',
     '波特酒': 'Port',
     '开胃酒': 'Aperitif',
+    '白酒': 'Baijiu',
   }
 
   const primaryBase = props.base[0]

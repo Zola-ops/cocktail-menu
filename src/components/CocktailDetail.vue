@@ -6,11 +6,11 @@
     <div class="absolute inset-0 bg-black/70" @click="$emit('close')"></div>
     
     <div class="detail-modal-content fade-in-scale">
-      <div class="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-5 sm:px-6 py-4 sm:py-4">
+      <div class="sticky top-0 z-10 bg-slate-900/95 backdrop-blur-lg border-b border-slate-700/50 px-5 sm:px-6 py-4">
         <div class="flex items-center justify-between gap-2">
           <div class="flex-1 min-w-0">
             <h2 class="text-xl sm:text-2xl font-bold text-white truncate">{{ cocktail.name }}</h2>
-            <p class="text-sm sm:text-sm text-slate-400 truncate">{{ cocktail.nameEn }}</p>
+            <p class="text-sm text-slate-400 truncate">{{ cocktail.nameEn }}</p>
           </div>
           <div class="flex items-center gap-2 flex-shrink-0">
             <button
@@ -40,7 +40,7 @@
           />
         </div>
         
-        <div v-if="cocktail.description" class="text-slate-300 text-base sm:text-base leading-relaxed">
+        <div v-if="cocktail.description" class="text-slate-300 text-base leading-relaxed">
           {{ cocktail.description }}
         </div>
 

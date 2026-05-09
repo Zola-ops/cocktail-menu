@@ -52,8 +52,8 @@
 
           <button
             @click="$emit('add')"
-            class="flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-300 bg-[var(--neon-cyan)]/20 hover:bg-[var(--neon-cyan)]/30 text-[var(--neon-cyan)] border border-[var(--neon-cyan)]/30 hover:border-[var(--neon-cyan)] hover:shadow-[var(--glow-cyan)]"
-            style="font-family: 'Orbitron', monospace; letter-spacing: 1px;"
+            class="flex items-center justify-center px-4 py-2 rounded-xl font-semibold transition-all duration-300 add-btn-gradient text-white hover:shadow-[var(--glow-cyan)] active:scale-95"
+            style="font-family: 'Orbitron', monospace; letter-spacing: 1px; min-width: 44px;"
             title="添加调酒"
           >
             <svg class="w-7 h-7 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,26 @@ defineEmits<{
   background-position: 100% 100%;
 }
 
+.add-btn-gradient {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
+  background-size: 200% 200%;
+  animation: gradientMoveCyan 3s ease infinite;
+}
+
+.add-btn-gradient:hover {
+  background-position: 100% 100%;
+}
+
 @keyframes gradientMove {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradientMoveCyan {
   0%, 100% {
     background-position: 0% 50%;
   }

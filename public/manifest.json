@@ -1,0 +1,32 @@
+{
+  "name": "下班后的赛博酒馆",
+  "short_name": "赛博酒馆",
+  "description": "下班后的赛博酒馆 - 探索经典与网红调酒，按口味和基酒筛选，AI智能配方生成",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle", "entertainment"],
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "AI调酒",
+      "short_name": "AI",
+      "description": "用AI生成创意调酒配方",
+      "url": "/?action=ai",
+      "icons": [{ "src": "/icons.svg", "sizes": "any" }]
+    }
+  ]
+}

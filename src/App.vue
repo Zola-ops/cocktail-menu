@@ -99,6 +99,8 @@
       @add="handleAIAdd"
       @save="handleAISave"
     />
+
+    <MobileGuide />
   </div>
 </template>
 
@@ -112,6 +114,7 @@ import CocktailCard from './components/CocktailCard.vue'
 import CocktailDetail from './components/CocktailDetail.vue'
 import AddCocktail from './components/AddCocktail.vue'
 import AIGenerateCocktail from './components/AIGenerateCocktail.vue'
+import MobileGuide from './components/MobileGuide.vue'
 
 const {
   cocktails,
